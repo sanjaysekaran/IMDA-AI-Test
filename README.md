@@ -4,10 +4,11 @@
 
 The sample/training data provided for this exercise consists of:
 
-- **25 `.jpg` files** (input images), and  
+- **25 `.jpg` files** (input images),
+- **25 `.txt` files** (equivalent RGB colour matrices in `.txt` format), and  
 - **25 one-line `.txt` files** (corresponding 5-character CAPTCHA labels).  
 
-Each input image is a **60 x 30 pixel RGB** color matrix, and each label contains the **5 ordered characters** embedded in the CAPTCHA.  
+Each input image is a **60 x 30 pixel RGB** colour matrix, and each label contains the **5 ordered characters** embedded in the CAPTCHA.  
 
 Based on this, we infer that the goal (though not explicitly stated) is to:
 

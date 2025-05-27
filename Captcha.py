@@ -161,25 +161,26 @@ class Captcha:
 
         print(f"Inference complete. Output: {predicted_text}")
 
-# Example Usage
-captcha = Captcha()
-
-# Training
-captcha.__train__(
-    train_input_path="/train/input",       # .jpg images
-    train_output_path="/train/output",      # .txt labels
-    epochs=150,
-    batch_size=4,
-    learning_rate=0.0001,
-    validation_split=0.0,
-    early_stopping_min_delta=0.01
-)
-
-# If model is already trained, you can load model directly:
-captcha.load_model("captcha_model.keras")
-
-# Inference
-captcha.__call__(
-    inference_input_path="test/input/input100.jpg",
-    inference_output_path="test/output/output100.txt"
-)
+if __name__ == '__main__':
+        # Example Usage
+        captcha = Captcha()
+        
+        # Training
+        captcha.__train__(
+            train_input_path="/train/input",       # .jpg images
+            train_output_path="/train/output",      # .txt labels
+            epochs=150,
+            batch_size=4,
+            learning_rate=0.0001,
+            validation_split=0.0,
+            early_stopping_min_delta=0.01
+        )
+        
+        # If a model is already trained, you can load the model directly without training:
+        captcha.load_model("captcha_model.keras")
+        
+        # Inference
+        captcha.__call__(
+            inference_input_path="test/input/input100.jpg",
+            inference_output_path="test/output/output100.txt"
+        )

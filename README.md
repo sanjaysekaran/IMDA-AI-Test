@@ -6,7 +6,7 @@ The sample/training data provided for this exercise consists of:
 
 - **25 `.jpg` files** (input images),
 - **25 `.txt` files** (equivalent RGB colour matrices in `.txt` format), and  
-- **25 one-line `.txt` files** (corresponding 5-character CAPTCHA labels).  
+- **25 one-line `.txt` files** (corresponding 5-character CAPTCHA text).  
 
 Each input image is a **60 x 30 pixel RGB** colour matrix, and each label contains the **5 ordered characters** embedded in the CAPTCHA.  
 
@@ -70,28 +70,28 @@ In this exercise, we use:
 The `Captcha` class provides two main methods: `__train__` and `__call__`.
 
 ### `__train__` Method
-This method trains the model. It requires:
+This method enables model training. It requires:
 
 - **Mandatory** parameters:
-  - Input path (to `.jpg` files)
-  - Output path (to `.txt` files)
+  - Input path (to load raw `.jpg` CAPTCHA images): `train_input_path`
+  - Output path (to load `.txt` CAPTCHA text): `train_output_path` 
 
 - **Optional** parameters:
-  - Number of epochs  
-  - Batch size  
-  - Learning rate (Adam optimiser)  
-  - Validation split  
-  - Minimum delta for early stopping  
+  - Number of epochs: `epochs`
+  - Batch size: `batch_size` 
+  - Learning rate (Adam optimiser): `learning_rate` 
+  - Validation split fraction: `validation_split` 
+  - Minimum delta for early stopping: `early_stopping_min_delta`
 
 Additionally:
 - Trained model weights are saved to a **Keras model file**, which can be reloaded using the `load_model` method in the `Captcha` class.
 
 ### `__call__` Method
-This method performs inference. It requires:
+This method enables model inference. It requires:
 
 - A trained model (either via `__train__` or `load_model`)
-- Input path (to `.jpg` file)
-- Output path (to save `.txt` prediction)
+- Input path (to load a single `.jpg` file for inference): `inference_input_path`
+- Output path (to save predicted CAPTCHA labels`.txt` prediction): `inference_output_path` 
 
 The method will:
 1. Load the input image.
@@ -105,6 +105,6 @@ The method will:
 
 - The code runs **end-to-end on Google Colab**.
 - Achieved a **training accuracy above 85%**.
-- The model correctly predicted the CAPTCHA for `input100.jpg` (the only input without a label), demonstrating good generalization.
+- The model correctly predicted the CAPTCHA for `input100.jpg` (the only input without a corresponding CAPTCHA text), demonstrating reasonably good generalization.
 - With more training data, performance can be improved further.
 - Additional model evaluation metrics can be added to serve as **production benchmarks** for monitoring and future iterations.
